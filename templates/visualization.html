@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="viz-container">
+
+    <h1 class="viz-title">
+        📊 Student Behaviour & Performance Analysis
+    </h1>
+
+    <div class="viz-filters">
+        <a href="/" class="nav-btn primary">⮜ Back</a>
+
+        <button onclick="showCategory('all')">All</button>
+        <button onclick="showCategory('impact')">Performance Impact</button>
+        <button onclick="showCategory('distribution')">Distribution</button>
+        <button onclick="showCategory('topper')">Topper Analysis</button>
+        <button onclick="showCategory('environment')">Environment</button>
+        
+        <a href="/prediction" class="nav-btn primary">Predict ⮞</a>
+
+    </div>
+    <div class="stats-container">
+
+    <div class="stat-card">
+        <h3>👨‍🎓 Total Students</h3>
+        <p>{{ total_students }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>📈 Avg Exam Score</h3>
+        <p>{{ avg_score }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>⏱ Avg Study Hours</h3>
+        <p>{{ avg_study }}</p>
+    </div>
+
+    <div class="stat-card">
+        <h3>📊 Avg Attendance</h3>
+        <p>{{ avg_attendance }}%</p>
+    </div>
+
+</div>
+
+    <div class="viz-grid">
+
+        <!-- IMPACT -->
+        <div class="viz-card impact">
+            <img src="{{ url_for('static', filename='plots/gpa_vs_score.png') }}">
+        </div>
+
+        <div class="viz-card impact">
+            <img src="{{ url_for('static', filename='plots/study_vs_score.png') }}">
+        </div>
+
+        <div class="viz-card impact">
+            <img src="{{ url_for('static', filename='plots/Attendance_vs_score.png') }}">
+        </div>
+
+        <div class="viz-card impact">
+            <img src="{{ url_for('static', filename='plots/motivation_vs_score.png') }}">
+        </div>
+
+        <div class="viz-card impact">
+            <img src="{{ url_for('static', filename='plots/screentime_vs_score.png') }}">
+        </div>
+
+        <div class="viz-card impact">
+            <img src="{{ url_for('static', filename='plots/entertainment_vs_score.png') }}">
+        </div>
+
+        <div class="viz-card impact">
+            <img src="{{ url_for('static', filename='plots/stress_vs_score.png') }}">
+        </div>
+
+        <div class="viz-card impact">
+            <img src="{{ url_for('static', filename='plots/anxiety_vs_score.png') }}">
+        </div>
+
+
+        <!-- DISTRIBUTION -->
+        <div class="viz-card distribution">
+            <img src="{{ url_for('static', filename='plots/sore_distribution.png') }}">
+        </div>
+
+        <!-- TOPPER -->
+        <div class="viz-card topper">
+            <img src="{{ url_for('static', filename='plots/topper_study_vs_entertainment.png') }}">
+        </div>
+
+        <!-- ENVIRONMENT -->
+        <div class="viz-card environment">
+            <img src="{{ url_for('static', filename='plots/major_vs_study_environment.png') }}">
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+function showCategory(category) {
+    let cards = document.querySelectorAll(".viz-card");
+
+    cards.forEach(card => {
+        card.style.display = "none";
+
+        if (category === "all" || card.classList.contains(category)) {
+            card.style.display = "block";
+        }
+    });
+}
+</script>
+
+{% endblock %}

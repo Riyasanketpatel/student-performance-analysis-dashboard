@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="form-container">
+
+    <a href="/" class="prediction-back">
+        <span>⮜ Back</span> 
+    </a>
+
+    <h2>Predict Exam Score</h2>
+
+    <form method="POST">
+
+        <input name="study_hours" placeholder="Study Hours per Day" required>
+        <input name="social_media" placeholder="Social Media Hours" required>
+        <input name="netflix" placeholder="Netflix Hours" required>
+        <input name="attendance" placeholder="Attendance %" required>
+        <input name="sleep" placeholder="Sleep Hours" required>
+        <input name="gpa" placeholder="Previous GPA / CGPA" required>
+        <input name="stress" placeholder="Stress Level" required>
+        <input name="motivation" placeholder="Motivation Level" required>
+        <input name="screen_time" placeholder="Screen Time" required>
+
+        <select name="gender">
+            <option>Female</option>
+            <option>Male</option>
+        </select>
+
+        <select name="major">
+            <option>Engineering</option>
+            <option>Psychology</option>
+            <option>Biology</option>
+            <option>Computer Science</option>
+            <option>Business</option>
+            <option>Arts</option>
+        </select>
+
+        <button type="submit">Predict</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

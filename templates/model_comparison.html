@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="card">
+
+<div class="top-bar">
+    <a href="/" class="nav-btn primary">⮜ Back</a>
+
+    <h2 class="model-title">Model Comparison</h2>
+
+    <a href="/prediction" class="nav-btn primary">Predict ⮞</a>
+</div>
+
+    <h3 class="best-model">🏆 Best Model: Linear Regression</h3>
+
+    <p class="model-desc">
+        All models achieved nearly identical performance.
+        This indicates the dataset has strong linear relationships.
+        Linear Regression is selected because it is the simplest and most interpretable.
+    </p>
+
+    <img src="{{ url_for('static', filename='plots/model_comparison_line.png') }}"
+         class="model-img">
+
+</div>
+
+
+{% endblock %}
